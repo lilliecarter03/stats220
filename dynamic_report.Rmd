@@ -1,0 +1,203 @@
+---
+title: My dynamic report
+output: html_fragment
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo=FALSE, message=FALSE, warning=FALSE, error=FALSE)
+
+```
+
+```{css}
+@import url('https://fonts.googleapis.com/css2?family=Cedarville+Cursive&family=Henny+Penny&family=IM+Fell+DW+Pica:ital@0;1&display=swap');
+
+
+
+h2 {
+    color: #540f73;
+    font-family: "Henny Penny", cursive;
+}
+
+h3 {
+    color: #540f73;
+    font-family: "IM Fell DW Pica", serif;
+}
+
+body{
+    color: #d9bce6;
+    background-color: #b53fe8;
+    font-family: "IM Fell DW Pica", serif;
+}
+```
+
+## Exploring music data through what songs I added to my playlists over a 4 day period.
+### Lillie Carter - lcar972
+
+The data explored throughout this HTML files was collected through a Google Form. Whenever I added a new song to one of my playlists on Spotify, I completed this Google Form by filling out a range of information relevant to the particular song I added to my playlist.
+
+Throughout this Google Form, the variables about the songs I added to my playlist included the collection of information around the song name, artist name, song length, what type of record the song was released on, the length of this record, and what rating I gave the song on a scale of 1 to 10.
+
+```{r}
+library(tidyverse)
+
+# uploading my data
+logged_data <- read_csv("project2_data.csv")
+
+# renaming variables within the data frame
+latest_data <- logged_data %>%
+  rename(timestamp = 1,
+         song_title = 2,
+         song_artist = 3,
+         song_length_s = 4,
+         record_type = 5,
+         record_length_m = 6,
+         song_rating = 7)
+```
+
+
+## Exploring some summary values of my data set
+
+### Analysis of the song_length_s variable
+```{r}
+# exploring the summary values of my data set 
+# song_length_s variable
+small_song_seconds <- latest_data$song_length_s %>%
+  min() # smallest song length in seconds
+
+small_song_minutes <- (latest_data$song_length_s/60) %>%
+  min() %>%
+  round(2) # smallest song length in minutes
+
+big_song_seconds <- latest_data$song_length_s %>%
+  max() # largest song length in seconds
+
+big_song_minutes <- (latest_data$song_length_s/60) %>%
+  max() %>%
+  round(2) # largest song length in minutes
+
+paste0("The shortest song length in this data set was ", small_song_seconds, " seconds, or ", small_song_minutes, " minutes. And the longest song length of this data set was ", big_song_seconds, " seconds, or ", big_song_minutes, " minutes.")
+
+mean_song_seconds <- mean(latest_data$song_length_s) %>%
+  round(2) # mean song length in seconds.
+
+mean_song_minutes <- mean(latest_data$song_length_s/60) %>%
+  round(2) # mean song length in minutes.
+
+paste0("The mean song length was ", mean_song_seconds, " seconds, or ", mean_song_minutes, " minutes.")
+```
+
+### Analysis of the song_title & song_artist variables
+```{r}
+# exploring the summary values of my data set 
+# song_title & song_artist variables
+
+small_song_char <- latest_data$song_title %>% 
+  nchar() %>% 
+  min() # smallest number of characters in a song title
+
+long_song_char <- latest_data$song_title %>% 
+  nchar() %>% 
+  max() # largest number of characters in a song title
+
+paste0("The song title with the smallest number of characters had ", small_song_char, " characters, and the biggest number of characters in a song title was ", long_song_char, ".")
+
+small_artist_char <- latest_data$song_artist %>% 
+  nchar() %>% 
+  min() # smallest number of characters in a song artist name
+
+long_artist_char <- latest_data$song_artist %>% 
+  nchar() %>% 
+  max() # largest number of characters in a song artist name
+
+paste0("The music artist with the shortest number of characters in their name had ", small_artist_char, " characters, and the biggest number of characters an artist had in their name was ", long_artist_char, ".")
+```
+
+### Analysis of the record_length_m variable
+```{r}
+# exploring the summary values of my data set 
+# record_length_m variable
+small_record <- latest_data$record_length_m %>% 
+  min() # smallest record length in minutes
+
+big_record <- latest_data$record_length_m %>% 
+  max() # largest record length in minutes
+
+paste0("The shortest record a song was released on was ", small_record, " minutes, and the longest record a song was released on was ", big_record, ".")
+
+record_range <- max(latest_data$record_length_m) -   min(latest_data$record_length_m) # range between smallest and largest record length in minutes
+
+paste0("The range between the shortest record and the longest record has a difference of ", record_range, " minutes.")
+
+mean_record <- mean(latest_data$record_length_m) %>% 
+  round(2) # mean record length in minutes
+
+paste0("The mean record length was ", mean_record, " minutes.")
+```
+
+### Analysis of the song_rating variable
+```{r}
+# exploring the summary values of my data set 
+# song_rating variable
+mean_rating <- mean(latest_data$song_rating) %>% 
+  round(1) # mean song rating
+
+paste0("The mean song rating on the 1 to 10 scale had a ", mean_rating, " mean rating.")
+```
+
+
+
+## Exploring bar graphs with my data set
+
+### Song_rating explored via record_type
+```{r}
+rating_record_graph <- ggplot(data = latest_data) +
+  geom_bar(aes(x = song_rating, fill = record_type)) +
+  labs(title = "Do I personally like songs that come off albums, singles, or EPs?",
+       subtitle = "My personal song ratings explored via their record type.",
+       x = "Personal Song Rating (scale of 1 to 10)",
+       y = "Song Count")
+rating_record_graph
+```
+
+
+
+### Song_artist explored through record_type
+```{r}
+artist_record_graph <- ggplot(data = latest_data) +
+  geom_bar(aes(y = song_artist, fill = record_type)) +
+  labs(title = "What song artists release on what type of record?",
+       subtitle = "Exploring how song artists release their music.",
+       x = "Artist Count",
+       y = "Artist Name")
+artist_record_graph
+```
+
+
+
+### Record_length explored through record_type
+```{r}
+record_length_type_graph <- ggplot(data = latest_data) +
+  geom_bar(aes(x=record_length_m, fill = record_type)) +
+  labs(title = "How long are these records?",
+       subtitle = "The length of particular singles, EPs, and albums in minutes.",
+       x = "Record Length (minutes)",
+       y = "Record Count")
+record_length_type_graph
+```
+
+
+
+### Song_title explored through the number of characters within the title
+```{r}
+# song_title explored through the number of characters within the title
+title_characters <- (latest_data$song_title) %>% nchar()
+
+title_characters_graph <- ggplot(data = latest_data) +
+  geom_bar(aes(y = song_title, fill = title_characters)) +
+  labs(title = "What kind of songs use more characters?",
+       subtitle = "Exploring what songs have higher and lower character lengths.",
+       x = " ",
+       y = "Song Title")
+title_characters_graph
+```
+
