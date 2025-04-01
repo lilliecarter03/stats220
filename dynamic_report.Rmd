@@ -34,6 +34,8 @@ body{
 ## Exploring music data through what songs I added to my playlists
 ### Lillie Carter - lcar972
 
+[](https://lilliecarter03.github.io/stats220/spoticat.gif)
+
 ```{r, fig.align='center'}
 knitr::include_graphics(path = "spoticat.gif")
 library(magick)
