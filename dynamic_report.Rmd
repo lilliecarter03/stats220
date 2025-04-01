@@ -33,14 +33,12 @@ body{
 img {
   display: block;
   margin: auto;
-  width: 50%;
+  width: 25%;
 }
 ```
 
 ## Exploring music data through what songs I added to my playlists
 ### Lillie Carter - lcar972
-
-![](https://lilliecarter03.github.io/stats220/spoticat.gif)
 
 ```{r}
 
