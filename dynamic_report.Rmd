@@ -36,7 +36,7 @@ body{
 ### Lillie Carter - lcar972
 
 ```{r, fig.align='center'}
-knitr::include_graphics("spoticat.gif")
+knitr::include_graphics()
 
 frame1 <- image_read("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQyilbHnit0w6Eh1NxdeCGVOsPz1fJeTxK4eQ&s") %>%
   image_scale(200) %>%
