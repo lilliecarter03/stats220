@@ -29,6 +29,12 @@ body{
     font-family: "IM Fell DW Pica", serif;
     padding: 20px;
 }
+
+img {
+  display: block;
+  margin: auto;
+  width: 50%;
+}
 ```
 
 ## Exploring music data through what songs I added to my playlists
