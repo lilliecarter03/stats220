@@ -198,8 +198,9 @@ record_length_type_graph
 ```
 
 ### Song_title explored through the number of characters within the title
-```{r}
-# song_title explored through the number of characters within the title
+```{r, fig.align='center'}
+knitr::include_graphics()
+
 title_characters <- (latest_data$song_title) %>% nchar()
 
 title_characters_graph <- ggplot(data = latest_data) +
