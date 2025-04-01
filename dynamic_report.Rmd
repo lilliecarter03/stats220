@@ -35,8 +35,7 @@ body{
 ## Exploring music data through what songs I added to my playlists
 ### Lillie Carter - lcar972
 
-```{r, fig.align='center'}
-knitr::include_graphics(path = "spoticat.gif")
+```{r}
 
 frame1 <- image_read("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQyilbHnit0w6Eh1NxdeCGVOsPz1fJeTxK4eQ&s") %>%
   image_scale(200) %>%
@@ -198,8 +197,7 @@ record_length_type_graph
 ```
 
 ### Song_title explored through the number of characters within the title
-```{r, fig.align='center'}
-knitr::include_graphics()
+```{r}
 
 title_characters <- (latest_data$song_title) %>% nchar()
 
