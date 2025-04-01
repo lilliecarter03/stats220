@@ -14,24 +14,30 @@ library(magick)
 h2 {
     color: #540f73;
     font-family: "Henny Penny", cursive;
+    text-decoration: underline;
+    text-align: center;
 }
 
 h3 {
     color: #540f73;
     font-family: "IM Fell DW Pica", serif;
+    text-align: center;
 }
 
 body{
     color: #d9bce6;
     background-color: #b53fe8;
     font-family: "IM Fell DW Pica", serif;
+    padding: 20px;
 }
 ```
 
-## Exploring music data through what songs I added to my playlists over a 4 day period.
+## Exploring music data through what songs I added to my playlists
 ### Lillie Carter - lcar972
 
-```{r}
+```{r, fig.align='center'}
+knitr::include_graphics("spoticat.gif")
+
 frame1 <- image_read("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQyilbHnit0w6Eh1NxdeCGVOsPz1fJeTxK4eQ&s") %>%
   image_scale(200) %>%
   image_extent("200x200")
@@ -51,7 +57,6 @@ frame4 <- image_read("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQyil
 frames <- c(frame1, frame2, frame3, frame4)
 
 spoticat_gif <- image_animate(frames, fps = 2)
-spoticat_gif
 
 image_write(spoticat_gif, "spoticat.gif")
 ```
@@ -205,4 +210,3 @@ title_characters_graph <- ggplot(data = latest_data) +
        y = "Song Title")
 title_characters_graph
 ```
-
