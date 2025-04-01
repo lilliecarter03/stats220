@@ -34,7 +34,7 @@ body{
 ## Exploring music data through what songs I added to my playlists
 ### Lillie Carter - lcar972
 
-[](https://lilliecarter03.github.io/stats220/spoticat.gif)
+![](https://lilliecarter03.github.io/stats220/spoticat.gif)
 
 The data explored throughout this HTML files was collected via a Google Form since the 27th of March 2025. Whenever I added a new song to one of my playlists on Spotify, I completed this Google Form by filling out a range of information relevant to the particular song I added to my playlist.
 
