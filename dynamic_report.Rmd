@@ -56,6 +56,7 @@ frame4 <- image_read("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQyil
 frames <- c(frame1, frame2, frame3, frame4)
 
 spoticat_gif <- image_animate(frames, fps = 2)
+spoticat_gif
 
 image_write(spoticat_gif, "spoticat.gif")
 ```
