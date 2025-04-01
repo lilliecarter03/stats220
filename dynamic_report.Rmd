@@ -36,34 +36,6 @@ body{
 
 [](https://lilliecarter03.github.io/stats220/spoticat.gif)
 
-```{r, fig.align='center'}
-knitr::include_graphics(path = "spoticat.gif")
-library(magick)
-
-frame1 <- image_read("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQyilbHnit0w6Eh1NxdeCGVOsPz1fJeTxK4eQ&s") %>%
-  image_scale(200) %>%
-  image_extent("200x200")
-
-frame2 <- image_read("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQyilbHnit0w6Eh1NxdeCGVOsPz1fJeTxK4eQ&s") %>%
-  image_scale(150) %>%
-  image_extent("200x200")
-
-frame3 <- image_read("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQyilbHnit0w6Eh1NxdeCGVOsPz1fJeTxK4eQ&s") %>%
-  image_scale(100) %>%
-  image_extent("200x200")
-
-frame4 <- image_read("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQyilbHnit0w6Eh1NxdeCGVOsPz1fJeTxK4eQ&s") %>%
-  image_scale(50) %>%
-  image_extent("200x200")
-
-frames <- c(frame1, frame2, frame3, frame4)
-
-spoticat_gif <- image_animate(frames, fps = 2)
-spoticat_gif
-
-image_write(spoticat_gif, "spoticat.gif")
-```
-
 The data explored throughout this HTML files was collected via a Google Form since the 27th of March 2025. Whenever I added a new song to one of my playlists on Spotify, I completed this Google Form by filling out a range of information relevant to the particular song I added to my playlist.
 
 Throughout this Google Form, the variables about the songs I added to my playlist included the collection of information around the song name, artist name, song length, what type of record the song was released on, the length of this record, and what rating I gave the song on a scale of 1 to 10.
