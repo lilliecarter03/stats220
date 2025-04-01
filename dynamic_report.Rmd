@@ -32,19 +32,19 @@ body{
 ### Lillie Carter - lcar972
 
 ```{r}
-frame1 <- image_read(path = "spoticat.png") %>%
+frame1 <- image_read("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQyilbHnit0w6Eh1NxdeCGVOsPz1fJeTxK4eQ&s") %>%
   image_scale(200) %>%
   image_extent("200x200")
 
-frame2 <- image_read(path = "spoticat.png") %>%
+frame2 <- image_read("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQyilbHnit0w6Eh1NxdeCGVOsPz1fJeTxK4eQ&s") %>%
   image_scale(150) %>%
   image_extent("200x200")
 
-frame3 <- image_read(path = "spoticat.png") %>%
+frame3 <- image_read("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQyilbHnit0w6Eh1NxdeCGVOsPz1fJeTxK4eQ&s") %>%
   image_scale(100) %>%
   image_extent("200x200")
 
-frame4 <- image_read(path = "spoticat.png") %>%
+frame4 <- image_read("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQyilbHnit0w6Eh1NxdeCGVOsPz1fJeTxK4eQ&s") %>%
   image_scale(50) %>%
   image_extent("200x200")
 
